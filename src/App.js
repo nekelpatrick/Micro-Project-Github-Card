@@ -2,15 +2,17 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./App.css";
 import { Card } from "antd";
+import Form from "./components/Form";
 
 function App() {
   const [user, setUser] = useState(null);
   const [active, setActive] = useState(false);
+  const [name, setByName] = useState("nekelpatrick");
 
   const handleToggle = (event) => {
     event.preventDefault();
     console.log("clicou.");
-    axios.get(`https://api.github.com/users/nekelpatrick`).then((res) => {
+    axios.get(`https://api.github.com/users/${name}`).then((res) => {
       setUser(res.data);
       setActive(!active);
       console.log(user);
@@ -18,20 +20,31 @@ function App() {
     });
   };
 
+  const inputHandler = (e) => {
+    setByName(e.target.value);
+  };
+
   return (
     <div className="App">
       <div className="div-container">
         {/* logo abaixo: se o state ACTIVE for falso a página ainda mostra o botão.
         se for TRUE, ele mostra os dados solicitados. */}
-        <button className="card-header" onClick={handleToggle}>
+        {/* <button className="card-header" onClick={handleToggle}>
           {active === false ? "Motrar Git Card" : "Voltar"}
-        </button>
+        </button> */}
+        <Form
+          handleToggle={handleToggle}
+          inputHandler={inputHandler}
+          active={active}
+        />
+
         {active === true && (
           <>
             <Card className="user-div" title={user.name} style={{ width: 300 }}>
               <p>Usuario GitHub: {user.login}</p>
               <p>Bio: {user.bio}</p>
               <p>Local: {user.location} </p>
+              <p>Repos publicos: {user.public_repos}</p>
               <p>
                 {" "}
                 <img className="avatar" src={user.avatar_url} alt="" />
@@ -39,7 +52,6 @@ function App() {
             </Card>
           </>
         )}
-
         {/* <button className="show-card" onClick={handleToggle}>
              Mostrar Cartão
            </button> */}
