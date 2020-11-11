@@ -25,7 +25,8 @@
 }
 
 .user-div {
-  border-radius: 10px;
+  border-radius: 20px;
+  border: 3px solid rgb(45, 250, 124);
 
   background-color: #241a63;
   padding: 10px;
@@ -87,7 +88,7 @@
   height: 18vh;
 }
 
-.show-card {
+/* .show-card {
   box-shadow: 3px 4px 0px 0px #899599;
   background: linear-gradient(to bottom, #c7bdff 5%, #bcaaf7 100%);
   background-color: #c7bdff;
@@ -109,7 +110,7 @@
 .show-card:active {
   position: relative;
   top: 1px;
-}
+} */
 
 @keyframes App-logo-spin {
   from {
