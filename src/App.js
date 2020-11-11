@@ -21,7 +21,7 @@ function App() {
   };
 
   const inputHandler = (e) => {
-    setByName(e.target.value);
+    setByName(e.target.value.toLowerCase());
   };
 
   return (
@@ -41,14 +41,13 @@ function App() {
         {active === true && (
           <>
             <Card className="user-div" title={user.name} style={{ width: 300 }}>
+              <p>
+                <img className="avatar" src={user.avatar_url} alt="" />
+              </p>
               <p>Usuario GitHub: {user.login}</p>
               <p>Bio: {user.bio}</p>
               <p>Local: {user.location} </p>
               <p>Repos publicos: {user.public_repos}</p>
-              <p>
-                {" "}
-                <img className="avatar" src={user.avatar_url} alt="" />
-              </p>
             </Card>
           </>
         )}
