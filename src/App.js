@@ -23,12 +23,10 @@ function App() {
       <div className="div-container">
         {/* logo abaixo: se o state ACTIVE for falso a página ainda mostra o botão.
         se for TRUE, ele mostra os dados solicitados. */}
-        <div className="card-header">Git Card</div>
-        {active === false ? (
-          <button className="show-card" onClick={handleToggle}>
-            Mostrar Cartão
-          </button>
-        ) : (
+        <button className="card-header" onClick={handleToggle}>
+          {active === false ? "Motrar Git Card" : "Voltar"}
+        </button>
+        {active === true && (
           <>
             <Card className="user-div" title={user.name} style={{ width: 300 }}>
               <p>Usuario GitHub: {user.login}</p>
@@ -41,6 +39,10 @@ function App() {
             </Card>
           </>
         )}
+
+        {/* <button className="show-card" onClick={handleToggle}>
+             Mostrar Cartão
+           </button> */}
       </div>
     </div>
   );
